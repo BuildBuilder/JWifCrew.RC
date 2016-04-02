@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\exploded-aar\RobotCore-release\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0666d81ab6701ba68f81b170cbdb78ba434eb00b">
+        <dex dex="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\pre-dexed\debug\classes-b54584fdd3b319d45bc842df2fa49165375d75af.jar" />
+    </item>
+    <item
+        jar="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\exploded-aar\FtcCommon-release\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e19ebc3f612058d1ce56c27e0867f609eb73edfa">
+        <dex dex="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\pre-dexed\debug\classes-e62d7763b8ac50b2249c4d2d0c28b49b17def788.jar" />
+    </item>
+    <item
+        jar="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\exploded-aar\Analytics-release\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
+        <dex dex="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\pre-dexed\debug\classes-e18de37e7f6d8bff6950b49b0d66479fd1b963f8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\exploded-aar\ModernRobotics-release\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01999c87afe3d10ffa06f3efa66f39e61e6aba0c">
+        <dex dex="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\pre-dexed\debug\classes-7fb661b015f5909bbdd74e4782cba29c710f9a77.jar" />
+    </item>
+    <item
+        jar="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\exploded-aar\WirelessP2p-release\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
+        <dex dex="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\pre-dexed\debug\classes-07bc3c383fa2d7c6849e72906d4256a8c5ef4e42.jar" />
+    </item>
+    <item
+        jar="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\exploded-aar\Hardware-release\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5b3fe4efe8fad907294d5332bf26afe87764694f">
+        <dex dex="C:\Users\Denis\Desktop\JWifCrew.RC\FtcRobotController\build\intermediates\pre-dexed\debug\classes-103618e4752a31bc7924939337c3b96c09f3676a.jar" />
+    </item>
+
+</items>
