@@ -74,7 +74,7 @@ import java.io.Serializable;
 public class FtcRobotControllerActivity extends Activity implements SoundPool.OnLoadCompleteListener {
 
   public static final String CONFIGURE_FILENAME = "CONFIGURE_FILENAME";
-  private static final int REQUEST_CONFIG_WIFI_CHANNEL = 1;
+  private static final int REQUEST_CONFIG_WIFI_CHANNEL = 1;//Ща опять чего-нибудь испоганю
   private static final boolean USE_DEVICE_EMULATION = false; //Есть контакт...
   private static final int NUM_GAMEPADS = 2;
   public  double num = 0;
