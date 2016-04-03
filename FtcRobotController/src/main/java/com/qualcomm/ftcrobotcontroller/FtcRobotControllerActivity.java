@@ -40,7 +40,6 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.hardware.usb.UsbManager;
-import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -60,7 +59,7 @@ import com.qualcomm.ftccommon.LaunchActivityConstantsList;
 import com.qualcomm.ftccommon.Restarter;
 import com.qualcomm.ftccommon.UpdateUI;
 import com.qualcomm.ftcrobotcontroller.opmodes.FtcOpModeRegister;
-import com.qualcomm.ftcrobotcontroller.opmodes.MoyTeleop;
+import com.qualcomm.ftcrobotcontroller.opmodes.TestModeOp;
 import com.qualcomm.hardware.HardwareFactory;
 import com.qualcomm.robotcore.hardware.configuration.Utility;
 import com.qualcomm.robotcore.util.Dimmer;
@@ -74,20 +73,15 @@ import java.io.Serializable;
 
 public class FtcRobotControllerActivity extends Activity implements SoundPool.OnLoadCompleteListener {
 
+  public static final String CONFIGURE_FILENAME = "CONFIGURE_FILENAME";
   private static final int REQUEST_CONFIG_WIFI_CHANNEL = 1;
   private static final boolean USE_DEVICE_EMULATION = false; //Есть контакт...
   private static final int NUM_GAMEPADS = 2;
-
-  public static final String CONFIGURE_FILENAME = "CONFIGURE_FILENAME";
-
+  public  double num = 0;
   protected SharedPreferences preferences;
-  private SoundPool sp;
-  private int soundID;
   protected UpdateUI.Callback callback;
   protected Context context;
-  private Utility utility;
   protected ImageButton buttonMenu;
-
   protected TextView textDeviceName;
   protected TextView textWifiDirectStatus;
   protected TextView textRobotStatus;
@@ -95,31 +89,15 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
   protected TextView textOpMode;
   protected TextView textErrorMessage;
   protected ImmersiveMode immersion;
-
-  Intent intent;
-
   protected UpdateUI updateUI;
   protected Dimmer dimmer;
   protected LinearLayout entireScreenLayout;
-
   protected FtcRobotControllerService controllerService;
-
   protected FtcEventLoop eventLoop;
-  public  double num = 0;
-
-  @Override
-  public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-
-  }
-
-  protected class RobotRestarter implements Restarter {
-
-    public void requestRestart() {
-      requestRobotRestart();
-    }
-
-  }
-
+  Intent intent;
+  private SoundPool sp;
+  private int soundID;
+  private Utility utility;
   protected ServiceConnection connection = new ServiceConnection() {
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
@@ -132,6 +110,11 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
       controllerService = null;
     }
   };
+
+  @Override
+  public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+
+  }
 
   @Override
   protected void onNewIntent(Intent intent) {
@@ -160,7 +143,7 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
     super.onCreate(savedInstanceState);
     DataExchange.INSTANCE.context = this;
     setContentView(R.layout.activity_ftc_controller);
-    intent = new Intent(FtcRobotControllerActivity.this, MoyTeleop.class);
+    intent = new Intent(FtcRobotControllerActivity.this, TestModeOp.class);
 
     utility = new Utility(this);
     context = this;
@@ -222,9 +205,11 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
     });
 
   }
+
   public void Play(View V){
     SoundPlayer.INSTANCE.play("Sirena");
   }
+
   @Override
   protected void onResume() {
     super.onResume();
@@ -259,7 +244,6 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
       immersion.cancelSystemUIHide();
     }
   }
-
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -405,5 +389,13 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
         toast.show();
       }
     });
+  }
+
+  protected class RobotRestarter implements Restarter {
+
+    public void requestRestart() {
+      requestRobotRestart();
+    }
+
   }
 }

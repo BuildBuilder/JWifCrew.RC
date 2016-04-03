@@ -8,7 +8,7 @@ public class FtcOpModeRegister implements OpModeRegister {
    * @param manager op mode manager*/
   public void register(OpModeManager manager) {
     manager.register("тик-так ЕОПД", NullOp.class           );
-    manager.register("ВанДжойЕОПД" , MoyTeleop.class        );
+    manager.register("ВанДжойЕОПД" , TestModeOp.class        );
     manager.register("EncoderTry"  , EncTester.class        );
   }
 }
