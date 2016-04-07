@@ -18,7 +18,8 @@ public class GyroReader {
     private Thread reader;
 
     public GyroReader(GyroSensor gyroSensor, double deadZoneValue){
-        if(gyroSensor == null) throw new  NullPointerException("Sensor not init");
+        if(gyroSensor == null)
+            throw new  NullPointerException("Sensor not init");
         this.gyroSensor = gyroSensor;
         this.deadZoneValue = deadZoneValue;
         StartReading();
@@ -46,9 +47,11 @@ public class GyroReader {
 
         while (timer.time() < duration && list.size() < 1500){
             list.add(new Integer((int)gyroSensor.getRotation()));
+
             try {
                 Thread.sleep(1);
-            } catch (InterruptedException e) {}
+            }
+            catch (InterruptedException e) {}
         }
         int sum = 0;
         for(int i:list)
@@ -58,7 +61,7 @@ public class GyroReader {
     }
 
     public void StartReading(){
-        if(reader.isAlive()) return;
+        if(reader != null && reader.isAlive()) return;
         if(readerFlag) return;
         readerFlag = true;
 

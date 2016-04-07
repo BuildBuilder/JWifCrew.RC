@@ -34,8 +34,7 @@ public class TestModeOp extends OpMode {
 
 	@Override
 	public void init() {
-		GyroSensor gyro;
-		gyro       = hardwareMap.gyroSensor.get("gyro" );
+		GyroSensor gyro = hardwareMap.gyroSensor.get("gyro" );
 		motorRight = hardwareMap.dcMotor   .get("left" );
 		motorLeft  = hardwareMap.dcMotor   .get("right");
 		motorMetla = hardwareMap.dcMotor   .get("metla");
