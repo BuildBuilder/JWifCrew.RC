@@ -9,7 +9,7 @@ public class FtcOpModeRegister implements OpModeRegister {
   public void register(OpModeManager manager) {
     manager.register("тик-так ЕОПД", NullOp.class    );
     manager.register("ВанДжойЕОПД" , TestModeOp.class);
-    manager.register("EncoderTry"  , EncTester.class );
+    manager.register("GyroTry"  , GyroTester.class );
     manager.register("Gyro", GyroSettings.class      );
   }
 }

@@ -31,12 +31,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
+import com.qualcomm.ftcrobotcontroller.GyroReader;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
-import com.qualcomm.robotcore.hardware.I2cDevice;
+import com.qualcomm.robotcore.hardware.*;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.text.SimpleDateFormat;
@@ -47,18 +45,16 @@ import java.util.Date;
  * <p>
  *Enables control of the robot via the gamepad
  */
-public class EncTester extends LinearOpMode {
+public class GyroTester extends LinearOpMode {
 
   @Override
   public void runOpMode() throws InterruptedException {
-    DcMotor metla = hardwareMap.dcMotor.get("metla");
-    metla.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
-    metla.setPower(0.25);
+    GyroSensor gs = hardwareMap.gyroSensor.get("gyro");
+    GyroReader gr = new GyroReader(gs);
     waitForStart();
     while (true){
-      metla.setTargetPosition((int)(2000 * gamepad1.left_trigger));
-      telemetry.addData("enc", metla.getCurrentPosition());
-
+      telemetry.addData("gr", gr.getHeading());
+      telemetry.addData("gs", gs.getRotation());
     }
   }
 }
