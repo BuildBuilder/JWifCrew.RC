@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * Created by Denis on 03.04.2016.
  */
 public class GyroReader {
-    private static final int DEFAUlT_DEAD_VALUE = 2;
+    private static final int DEFAUlT_DEAD_VALUE = 3;
     private static final int DEFAUlT_SCALE_VALUE = 602;
 
     private boolean readerFlag;
@@ -22,6 +22,7 @@ public class GyroReader {
             throw new  NullPointerException("Sensor not init");
         this.gyroSensor = gyroSensor;
         this.deadZoneValue = deadZoneValue;
+        resetHeading();
         StartReading();
     }
     public GyroReader(GyroSensor gyroSensor){
@@ -54,10 +55,16 @@ public class GyroReader {
             catch (InterruptedException e) {}
         }
         int sum = 0;
-        for(int i:list)
+        int minValue = 100000000;
+        int maxValue = 0;
+        for(int i:list) {
             sum += i;
+            minValue = Math.min(i, minValue);
+            maxValue = Math.max(i,maxValue);
+        }
 
         scale = Math.round((double) sum / list.size());
+        deadZoneValue = Math.max(Math.abs(scale -  minValue),Math.abs(scale -  maxValue));
     }
 
     public void StartReading(){
@@ -75,10 +82,15 @@ public class GyroReader {
                                    readValue * duration.time() :
                                    0;
                     heading += shift;
+                    duration.reset();
                 }
             }
         });
         reader.start();
+    }
+
+    public void resetHeading(){
+        heading = 0;
     }
     public void StopReading(){
         if(!reader.isAlive()) return;

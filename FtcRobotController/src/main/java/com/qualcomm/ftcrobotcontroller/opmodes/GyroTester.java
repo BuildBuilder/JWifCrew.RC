@@ -51,10 +51,21 @@ public class GyroTester extends LinearOpMode {
   public void runOpMode() throws InterruptedException {
     GyroSensor gs = hardwareMap.gyroSensor.get("gyro");
     GyroReader gr = new GyroReader(gs);
+    gr.Calibration();
+    ElapsedTime duration = new ElapsedTime();
+    double heading = 0;
     waitForStart();
     while (true){
+      double readValue = gs.getRotation() - 596;
+      double shift = Math.abs(readValue) >= 2 ?
+              readValue * duration.time() :
+              0;
+      heading += shift;
       telemetry.addData("gr", gr.getHeading());
       telemetry.addData("gs", gs.getRotation());
+      telemetry.addData("Heading", heading);
+      telemetry.addData("et", duration.time());
+      duration.reset();
     }
   }
 }
