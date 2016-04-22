@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class GyroReader {
     private static final int DEFAUlT_DEAD_VALUE = 3;
     private static final int DEFAUlT_SCALE_VALUE = 602;
-//hello
+    //hello
     private boolean readerFlag;
     private double heading;
     private double deadZoneValue;

@@ -59,7 +59,7 @@ import com.qualcomm.ftccommon.LaunchActivityConstantsList;
 import com.qualcomm.ftccommon.Restarter;
 import com.qualcomm.ftccommon.UpdateUI;
 import com.qualcomm.ftcrobotcontroller.opmodes.FtcOpModeRegister;
-import com.qualcomm.ftcrobotcontroller.opmodes.TestModeOp;
+import com.qualcomm.ftcrobotcontroller.opmodes.TeleOp;
 import com.qualcomm.hardware.HardwareFactory;
 import com.qualcomm.robotcore.hardware.configuration.Utility;
 import com.qualcomm.robotcore.util.Dimmer;
@@ -143,7 +143,7 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
     super.onCreate(savedInstanceState);
     DataExchange.INSTANCE.context = this;
     setContentView(R.layout.activity_ftc_controller);
-    intent = new Intent(FtcRobotControllerActivity.this, TestModeOp.class);
+    intent = new Intent(FtcRobotControllerActivity.this, TeleOp.class);
 
     utility = new Utility(this);
     context = this;
