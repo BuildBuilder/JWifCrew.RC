@@ -11,9 +11,9 @@ import com.qualcomm.robotcore.util.Range;
 public class TeleOp extends OpMode {
 	final static DataExchange data = DataExchange.INSTANCE;
 	final static double
-			BUSKET_Y_FLOOR = 0.3,
-			BUSKET_Y_ROOF  = 0,
-			BUSKET_X_ZERO  = 0.5,
+			BASKET_Y_FLOOR = 0.3,
+			BASKET_Y_ROOF = 0,
+			BASKET_X_ZERO = 0.5,
 			DELTA_X        = 0.4,
 			BRUSH_SPEED    = 1,
 			HAND_SPEED     = 1;
@@ -26,7 +26,7 @@ public class TeleOp extends OpMode {
 			light;
 	Servo
 			basket_x,
-			busket_y,
+			basket_y,
 			hook,
 			jostle,
 			claw,
@@ -47,7 +47,7 @@ public class TeleOp extends OpMode {
 		claw       = hardwareMap.servo     .get("claw"  );
 		door 	   = hardwareMap.servo     .get("door"  );
 		basket_x = hardwareMap.servo     .get("bx"    );
-		busket_y   = hardwareMap.servo     .get("by"    );
+		basket_y = hardwareMap.servo     .get("by"    );
 		jostle     = hardwareMap.servo     .get("jostle");
 		hook       . setDirection(  Servo.Direction.REVERSE);
 		motorRight . setDirection(DcMotor.Direction.REVERSE);
@@ -67,8 +67,8 @@ public class TeleOp extends OpMode {
 				jostleValue    = gamepad2.a ? 0 : gamepad2.b ? 0.2 : jostle.getPosition(),
 				hookVAlue      = gamepad2.y ? 0 : 0.9,
 				doorValue      = gamepad1.a ? 1 : (gamepad1.b ? 0 : 0.23),
-				basket_y_value = gamepad2.dpad_down ? BUSKET_Y_FLOOR: gamepad2.dpad_up ? BUSKET_Y_ROOF : busket_y.getPosition(),
-				basket_x_value = BUSKET_X_ZERO + gamepad2.left_stick_y / 18 +
+				basket_y_value = gamepad2.dpad_down ? BASKET_Y_FLOOR : gamepad2.dpad_up ? BASKET_Y_ROOF : basket_y.getPosition(),
+				basket_x_value = BASKET_X_ZERO + gamepad2.left_stick_y / 18 +
 									(gamepad2.dpad_left ? DELTA_X :
 										gamepad2.dpad_right ? -DELTA_X :
 											gamepad2.dpad_down ? 0 : basket_x.getPosition());
@@ -86,7 +86,7 @@ public class TeleOp extends OpMode {
 		jostle    .setPosition(jostleValue   );
         door      .setPosition(doorValue     );
         basket_x  .setPosition(basket_x_value);
-        busket_y  .setPosition(basket_y_value);
+        basket_y.setPosition(basket_y_value);
         hook      .setPosition(hookVAlue     );
 		motorHand .setPower(handValue        );
 		motorMetla.setPower(metlaValue       );
