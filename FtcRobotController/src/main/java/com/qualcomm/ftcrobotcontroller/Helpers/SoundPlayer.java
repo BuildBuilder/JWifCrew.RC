@@ -1,7 +1,8 @@
-package com.qualcomm.ftcrobotcontroller;
+package com.qualcomm.ftcrobotcontroller.Helpers;
 
 import android.media.AudioManager;
 import android.media.SoundPool;
+import com.qualcomm.ftcrobotcontroller.R;
 
 import java.util.HashMap;
 
