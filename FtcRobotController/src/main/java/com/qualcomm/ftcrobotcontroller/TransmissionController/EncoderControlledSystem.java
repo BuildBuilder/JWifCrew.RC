@@ -29,7 +29,7 @@ class EncoderControlledSystem extends TransmissionController {
         transmission.setMode(DcMotorController.RunMode.RESET_ENCODERS);
         transmission.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
         transmission.setPower(1);
-        while ((transmission.getLeftMotor().getCurrentPosition() - target * DEGREE_PER_VALUE) >= DABUDI_DABUDAY)
+        while ((transmission.getLeftMotor().getCurrentPosition() - target) >= DABUDI_DABUDAY)
             transmission.setTargetPosition(target);
         transmission.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
         transmission.setPower(0);
