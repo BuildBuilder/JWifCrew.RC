@@ -44,7 +44,7 @@ public class BasketController {
             }
         }
         private final static double
-            ZERO_VALUE  = 0.5,
+            ZERO_VALUE  = 0.45,
             DELTA_VALUE = 0.4;
     }
     public enum BasketPositionY{

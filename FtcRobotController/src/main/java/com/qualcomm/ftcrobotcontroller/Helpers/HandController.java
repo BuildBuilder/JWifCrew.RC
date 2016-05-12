@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Created by я on 26.04.2016.
  */
 public class HandController extends MotorPositionDirector {
-    private final double HAND_SPEED = 0.3;
+    private final double HAND_SPEED = 0.2;
     public HandController(DcMotor motor) {
         super(motor);
         speed = HAND_SPEED;

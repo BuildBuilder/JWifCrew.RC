@@ -44,7 +44,7 @@ public class TeleOp extends OpMode {
 		basket_x   = hardwareMap.servo     .get("bx"    );
 		basket_y   = hardwareMap.servo     .get("by"    );
 		jostle     = hardwareMap.servo     .get("jostle");
-		hook       . setDirection(  Servo.Direction.REVERSE);
+		hook       . setDirection(Servo.Direction.REVERSE  );
 		motorRight . setDirection(DcMotor.Direction.REVERSE);
 		motorHand  . setDirection(DcMotor.Direction.REVERSE);
 		hand       = new HandController(motorHand);
@@ -75,10 +75,11 @@ public class TeleOp extends OpMode {
 				climbValue     = gamepad1.right_trigger - gamepad1.left_trigger,
 				clawValue      = gamepad1.right_bumper ? 1 : gamepad1.left_bumper ? 0 : claw.getPosition(),
 				metlaValue     = gamepad2.left_bumper ? -BRUSH_SPEED : (gamepad2.right_bumper ? BRUSH_SPEED : 0),
-				jostleValue    = gamepad2.a ? 0 : gamepad2.b ? 0.2 : jostle.getPosition(),
-				hookVAlue      = gamepad2.y ? 0 : 0.9,
-				doorValue      = gamepad1.a ? 1 : (gamepad1.b ? 0 : 0.23),
-				offset		   = gamepad2.left_stick_y / 20;
+				jostleValue    = gamepad2.a ? 0 : gamepad2.b ? 1 : jostle.getPosition(),
+				hookVAlue      = gamepad2.y ? 1 : 0,
+				doorValue      = gamepad1.a ? 0.4:
+								   gamepad1.b ? 0 : door.getPosition(),
+				offset		   = gamepad2.left_stick_y / 10;
 		boolean
 				lightOn        = gamepad1.left_stick_button  ||  gamepad2.left_stick_button,
 				signalOn       = gamepad1.right_stick_button || gamepad2.right_stick_button;
@@ -90,7 +91,7 @@ public class TeleOp extends OpMode {
 		jostle    .setPosition(jostleValue );
         door      .setPosition(doorValue   );
         hook      .setPosition(hookVAlue   );
-//		motorMetla.setPower(metlaValue     );
+		motorMetla.setPower(metlaValue     );
 		motorCLimb.setPower(climbValue     );
 		motorRight.setPower(rightValue     );
 		motorLeft .setPower(leftValue      );
