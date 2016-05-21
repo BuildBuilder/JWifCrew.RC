@@ -6,35 +6,25 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 /**
  * Created by Denis on 28.04.2016.
  */
-class GyroscopikSystem extends TransmissionController{
-    private final double DABUDI_DABUDAY = 3;
-    private final double SPEED_CORRECTION = 10;
-    private Transmission transmission;
-    private GyroReader gyroReader;
+final class GyroscopikSystem{
+    private final static double DABUDI_DABUDAY = 3;
+    private final static double SPEED_CORRECTION = 10;
 
-    public GyroscopikSystem(Transmission transmission, GyroReader gyroReader){
-        this.transmission = transmission;
-        this.gyroReader = gyroReader;
-    }
+    public static final class RotationController extends com.qualcomm.ftcrobotcontroller.TransmissionController.RotationController{
+        private GyroReader gyroReader;
+        public RotationController(Transmission transmission, GyroReader gyroReader){
+            this.transmission = transmission;
+            this.gyroReader = gyroReader;
+        }
 
-    @Override
-    public void RotateOn(double angle) {
-        gyroReader.resetHeading();
-        transmission.setMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
-        double path;
-        while(Math.abs(path = gyroReader.getHeading() - angle) > DABUDI_DABUDAY)
-            transmission.setPower(path * SPEED_CORRECTION);
-        transmission.setPower(0);
-    }
-
-    @Override
-    public void RunOn(int target) {
-        transmission.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        transmission.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
-        transmission.setPower(1);
-        while ((transmission.getLeftMotor().getCurrentPosition() - target) >= DABUDI_DABUDAY)
-            transmission.setTargetPosition(target);
-        transmission.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        transmission.setPower(0);
+        @Override
+        public void RotateTo(double target) {
+            gyroReader.resetHeading();
+            transmission.setMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+            double path;
+            while(Math.abs(path = gyroReader.getHeading() - target) > DABUDI_DABUDAY)
+                transmission.setPower(path * SPEED_CORRECTION);
+            transmission.setPower(0);
+        }
     }
 }

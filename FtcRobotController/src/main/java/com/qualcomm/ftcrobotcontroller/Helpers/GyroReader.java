@@ -100,4 +100,20 @@ public class GyroReader {
     public double AbsoluteRotation(){
         return heading % 360.0;
     }
+    public Logger.DataReader getDataReader(){
+        final GyroReader _tmp = this;
+        return new Logger.DataReader() {
+            GyroReader _gr = _tmp;
+            final String _name = "GyroSensor";
+            @Override
+            public String getName() {
+                return _name;
+            }
+
+            @Override
+            public double getValue() {
+                return _tmp.getHeading();
+            }
+        };
+    }
 }
