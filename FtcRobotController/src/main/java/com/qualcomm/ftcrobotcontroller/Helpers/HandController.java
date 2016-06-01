@@ -23,7 +23,7 @@ public class HandController extends MotorPositionDirector {
         Lower,
         Current;
         private final int
-                HIGHIR_POSITION_VALUE = 856,
+                HIGHIR_POSITION_VALUE = 801,
                 LOWER_POSITION_VALUE  = 0  ;
         protected int getValue(){
             return (this == Higher) ? HIGHIR_POSITION_VALUE : LOWER_POSITION_VALUE;

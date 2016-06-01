@@ -21,5 +21,7 @@ public class RobotCondition {
             x_offset;
     public boolean
             lightOn,
+            isDoorLocked,
+            isDoorOpened,
             signalOn;
 }

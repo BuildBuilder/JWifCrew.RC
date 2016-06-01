@@ -33,10 +33,16 @@ public class TeleOp extends OpMode {
 		rc.metlaValue   = gamepad2.left_bumper ? 1 : (gamepad2.right_bumper ? -1 : 0);
 		rc.jostleValue  = gamepad2.a ? 0 : gamepad2.b ? 1 : robot.jostle.getPosition();
 		rc.hookVAlue    = gamepad2.y ? 1 : 0;
-		rc.doorValue    = Math.pow(Math.abs(gamepad2.right_stick_y/2+0.5), 0.8) * 0.45;
+		rc.doorValue    = Math.pow(Math.abs(gamepad2.right_stick_y / 2+0.5), 0.8) * 0.45;
 		rc.x_offset		= gamepad2.left_stick_y / 10;
 		rc.lightOn      = gamepad1.left_stick_button  ||  gamepad2.left_stick_button;
 		rc.signalOn     = gamepad1.right_stick_button || gamepad2.right_stick_button;
+		rc.isDoorLocked = gamepad2.right_stick_button ? false :
+							gamepad2.back ? true :
+							  rc.isDoorLocked;
+		rc.isDoorOpened = gamepad2.x ? true :
+							gamepad2.right_stick_button ? false :
+							rc.isDoorOpened;
 
 
 		if(Math.abs(rc.climbValue) < 0.4) rc.climbValue = 0;

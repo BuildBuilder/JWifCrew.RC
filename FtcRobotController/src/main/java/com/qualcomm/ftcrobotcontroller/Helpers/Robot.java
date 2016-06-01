@@ -105,7 +105,9 @@ public final class Robot {
         hand      .setPosition(robotCondition.handPosition                 );
         claw      .setPosition(Range.clip(robotCondition.clawValue    ,0,1));
         jostle    .setPosition(Range.clip(robotCondition.jostleValue  ,0,1));
-        door      .setPosition(Range.clip(robotCondition.doorValue    ,0,1));
+        door      .setPosition(robotCondition.isDoorLocked ? 0 :
+                               robotCondition.isDoorOpened ? 0.45:
+                               Range.clip(robotCondition.doorValue    ,0,1));
         hook      .setPosition(Range.clip(robotCondition.hookVAlue    ,0,1));
         basket    .setPosition(robotCondition.xPosition,
                                robotCondition.yPosition,
