@@ -14,17 +14,17 @@ public class TransmissionController {
     private TransmissionController(DcMotor Left, DcMotor Right){
         transmission = new Transmission(Left, Right);
     }
-    public TransmissionController getInstance(DcMotor Left, DcMotor Right, boolean isEncoderControlled){
+    public static TransmissionController getInstance(DcMotor Left, DcMotor Right, boolean isEncoderControlled){
         TransmissionController instance = new TransmissionController(Left,Right);
         instance.runningController = isEncoderControlled ?
                 new EncoderControlledSystem.RunningController(instance.transmission) :
                 new TimerControlledSystem  .RunningController(instance.transmission);
         return instance;
     }
-    public TransmissionController getInstance(DcMotor Left, DcMotor Right){
+    public static TransmissionController getInstance(DcMotor Left, DcMotor Right){
         return getInstance(Left, Right, true);
     }
-    public TransmissionController getInstance(DcMotor Left, DcMotor Right, GyroReader gyroReader){
+    public static TransmissionController getInstance(DcMotor Left, DcMotor Right, GyroReader gyroReader){
         TransmissionController instance = new TransmissionController(Left,Right);
         instance.ConnectGyroReader(gyroReader);
         return instance;

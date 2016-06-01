@@ -13,10 +13,13 @@
     </LegacyModuleController>
     <MotorController name="Motor Controller 4" serialNumber="AL00VSS0">
         <Motor name="metla" port="1"/>
-        <Motor name="left"  port="2"/>
+        <Motor name="right"  port="2"/>
     </MotorController>
+    <DeviceInterfaceModule name="Device Interface Module 1" serialNumber="AI02RI5F">
+        <OpticalDistanceSensor name="eopd" port="0"/>
+    </DeviceInterfaceModule>
     <MotorController name="Motor Controller 1" serialNumber="AL00VI1A">
-        <Motor name="right" port="1"/>
+        <Motor name="left" port="1"/>
         <Motor name="climb" port="2"/>
     </MotorController>
     <MotorController name="Motor Controller 5" serialNumber="AH00QJ2K">
