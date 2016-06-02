@@ -364,7 +364,7 @@ public final class R {
         public static final int load_menu_item=0x7f0a0041;
         public static final int matrix_controller_name=0x7f0a0042;
         public static final int matrix_controller_name_prompt=0x7f0a0043;
-        public static final int matrix_motor_title=0x7f0a0044;
+        public static final int matrix_mo   tor_title=0x7f0a0044;
         public static final int matrix_name_prompt=0x7f0a0045;
         public static final int matrix_port0=0x7f0a0046;
         public static final int matrix_port1=0x7f0a0047;
