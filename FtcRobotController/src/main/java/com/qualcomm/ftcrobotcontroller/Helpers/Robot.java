@@ -97,6 +97,8 @@ public final class Robot {
     }
     public RobotCondition getRobotCondition(){return robotCondition;}
     public void setCondition(){
+        if(robotCondition.handPosition == HandController.HandPosition.Lower)
+            robotCondition.xPosition = BasketController.BasketPositionX.Center;
         motorMetla.setPower(Range.clip(robotCondition.metlaValue,-1,1)     );
         motorCLimb.setPower(Range.clip(robotCondition.climbValue,-1,1)     );
         motorRight.setPower(Range.clip(robotCondition.rightValue,-1,1)     );

@@ -39,6 +39,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.hardware.SensorManager;
 import android.hardware.usb.UsbManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ import com.qualcomm.ftccommon.FtcRobotControllerService.FtcRobotControllerBinder
 import com.qualcomm.ftccommon.LaunchActivityConstantsList;
 import com.qualcomm.ftccommon.Restarter;
 import com.qualcomm.ftccommon.UpdateUI;
+import com.qualcomm.ftcrobotcontroller.Helpers.AccelSensor;
 import com.qualcomm.ftcrobotcontroller.Helpers.DataExchange;
 import com.qualcomm.ftcrobotcontroller.Helpers.SoundPlayer;
 import com.qualcomm.ftcrobotcontroller.opmodes.FtcOpModeRegister;
@@ -100,6 +102,7 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
   private SoundPool sp;
   private int soundID;
   private Utility utility;
+  AccelSensor ac;
   protected ServiceConnection connection = new ServiceConnection() {
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
@@ -182,6 +185,7 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
     hittingMenuButtonBrightensScreen();
 
     if (USE_DEVICE_EMULATION) { HardwareFactory.enableDeviceEmulation(); }
+    ac = new AccelSensor((SensorManager)getSystemService(Context.SENSOR_SERVICE));
   }
 
   @Override

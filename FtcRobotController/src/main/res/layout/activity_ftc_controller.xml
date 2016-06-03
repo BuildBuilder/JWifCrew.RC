@@ -158,6 +158,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Send"
+            android:visibility="invisible"
             android:onClick="sendNumber"
             android:layout_alignParentBottom="true" android:layout_alignRight="@+id/textGamepad2"
             android:layout_alignEnd="@+id/textGamepad2" android:id="@+id/button"/>

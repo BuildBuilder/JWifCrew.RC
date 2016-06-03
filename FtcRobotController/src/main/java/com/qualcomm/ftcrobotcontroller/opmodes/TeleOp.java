@@ -19,13 +19,10 @@ public class TeleOp extends OpMode {
 								 	gamepad2.dpad_right ? BasketController.BasketPositionX.Right :
 								 		gamepad2.dpad_down ? BasketController.BasketPositionX.Center :
 											BasketController.BasketPositionX.Current;
-		rc.yPosition	= gamepad2.start ? BasketController.BasketPositionY.Higher :
-				        		 	gamepad2.back ? BasketController.BasketPositionY.Lower :
-										BasketController.BasketPositionY.Current;
+		rc.yPosition = BasketController.BasketPositionY.Current;
 		rc.handPosition = gamepad2.right_trigger == 1 ? HandController.HandPosition.Higher :
 									gamepad2.left_trigger == 1 ? HandController.HandPosition.Lower :
 										HandController.HandPosition.Current;
-
 		rc.rightValue   = scaleInput(Range.clip(gamepad1.right_stick_y, -1, 1));
 		rc.leftValue    = scaleInput(Range.clip(gamepad1.left_stick_y , -1, 1));
 		rc.climbValue   = gamepad1.right_trigger - gamepad1.left_trigger;
@@ -36,7 +33,7 @@ public class TeleOp extends OpMode {
 		rc.doorValue    = Math.pow(Math.abs(gamepad2.right_stick_y / 2+0.5), 0.8) * 0.45;
 		rc.x_offset		= gamepad2.left_stick_y / 10;
 		rc.lightOn      = gamepad1.left_stick_button  ||  gamepad2.left_stick_button;
-		rc.signalOn     = gamepad1.right_stick_button || gamepad2.right_stick_button;
+		rc.signalOn     = gamepad1.right_stick_button;
 		rc.isDoorLocked = gamepad2.right_stick_button ? false :
 							gamepad2.back ? true :
 							  rc.isDoorLocked;
