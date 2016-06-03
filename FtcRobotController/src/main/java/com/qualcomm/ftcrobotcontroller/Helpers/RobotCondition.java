@@ -10,18 +10,19 @@ public class RobotCondition {
     public BasketController.BasketPositionY yPosition;
     public HandController.HandPosition handPosition;
     public double
-            rightValue,
-            leftValue,
-            climbValue,
-            clawValue,
-            metlaValue,
+            rightValue ,
+            leftValue  ,
+            climbValue ,
+            clawValue  ,
+            metlaValue ,
             jostleValue,
-            hookVAlue,
-            doorValue,
-            x_offset;
+            hookVAlue  ,
+            doorValue  ,
+            x_offset   ;
     public boolean
             lightOn,
             isDoorLocked,
             isDoorOpened,
+            shouldJostleChanged,
             signalOn;
 }

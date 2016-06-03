@@ -11,6 +11,8 @@ import com.qualcomm.robotcore.util.Range;
  * Created by я on 20.05.2016.
  */
 public final class Robot {
+    private JostleController
+            jostleController;
     public HandController
             hand;
 
@@ -51,13 +53,13 @@ public final class Robot {
         door 	       = hardwareMap.servo                .get("door"  );
         basket_x       = hardwareMap.servo                .get("bx"    );
         basket_y       = hardwareMap.servo                .get("by"    );
-        jostle         = hardwareMap.servo                .get("jostle");
         distanceSensor = hardwareMap.opticalDistanceSensor.get("eopd");
         motorRight     . setDirection(DcMotor.Direction.REVERSE);
         motorHand      . setDirection(DcMotor.Direction.REVERSE);
         hand           = new HandController(motorHand);
         basket         = new BasketController(basket_x, basket_y);
-        transmissionController= TransmissionController.getInstance(motorLeft ,motorRight);
+        jostleController = new JostleController(jostle);
+        transmissionController = TransmissionController.getInstance(motorLeft ,motorRight);
         gyro           = new GyroReader(hardwareMap.gyroSensor.get("gyro" ));
         gyro           . Calibration();
     }
@@ -97,8 +99,10 @@ public final class Robot {
     }
     public RobotCondition getRobotCondition(){return robotCondition;}
     public void setCondition(){
-        if(robotCondition.handPosition == HandController.HandPosition.Lower)
+        if(robotCondition.handPosition == HandController.HandPosition.Lower){
             robotCondition.xPosition = BasketController.BasketPositionX.Center;
+            robotCondition.isDoorLocked = true;
+        }
         motorMetla.setPower(Range.clip(robotCondition.metlaValue,-1,1)     );
         motorCLimb.setPower(Range.clip(robotCondition.climbValue,-1,1)     );
         motorRight.setPower(Range.clip(robotCondition.rightValue,-1,1)     );
@@ -106,7 +110,6 @@ public final class Robot {
         light     .setPower(Range.clip(robotCondition.lightOn ? 1 : 0,-1,1));
         hand      .setPosition(robotCondition.handPosition                 );
         claw      .setPosition(Range.clip(robotCondition.clawValue    ,0,1));
-        jostle    .setPosition(Range.clip(robotCondition.jostleValue  ,0,1));
         door      .setPosition(robotCondition.isDoorLocked ? 0 :
                                robotCondition.isDoorOpened ? 0.45:
                                Range.clip(robotCondition.doorValue    ,0,1));
@@ -114,6 +117,7 @@ public final class Robot {
         basket    .setPosition(robotCondition.xPosition,
                                robotCondition.yPosition,
                                robotCondition.x_offset);
+
         logger.review();
     }
     public HandController getHand(){return hand;}

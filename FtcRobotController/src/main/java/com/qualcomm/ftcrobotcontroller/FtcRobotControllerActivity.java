@@ -102,7 +102,6 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
   private SoundPool sp;
   private int soundID;
   private Utility utility;
-  AccelSensor ac;
   protected ServiceConnection connection = new ServiceConnection() {
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
@@ -185,7 +184,7 @@ public class FtcRobotControllerActivity extends Activity implements SoundPool.On
     hittingMenuButtonBrightensScreen();
 
     if (USE_DEVICE_EMULATION) { HardwareFactory.enableDeviceEmulation(); }
-    ac = new AccelSensor((SensorManager)getSystemService(Context.SENSOR_SERVICE));
+    DataExchange.INSTANCE.sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
   }
 
   @Override

@@ -25,10 +25,10 @@ public class TeleOp extends OpMode {
 										HandController.HandPosition.Current;
 		rc.rightValue   = scaleInput(Range.clip(gamepad1.right_stick_y, -1, 1));
 		rc.leftValue    = scaleInput(Range.clip(gamepad1.left_stick_y , -1, 1));
+
 		rc.climbValue   = gamepad1.right_trigger - gamepad1.left_trigger;
 		rc.clawValue    = gamepad1.right_bumper ? 1 : gamepad1.left_bumper ? 0 : robot.claw.getPosition();
 		rc.metlaValue   = gamepad2.left_bumper ? 1 : (gamepad2.right_bumper ? -1 : 0);
-		rc.jostleValue  = gamepad2.a ? 0 : gamepad2.b ? 1 : robot.jostle.getPosition();
 		rc.hookVAlue    = gamepad2.y ? 1 : 0;
 		rc.doorValue    = Math.pow(Math.abs(gamepad2.right_stick_y / 2+0.5), 0.8) * 0.45;
 		rc.x_offset		= gamepad2.left_stick_y / 10;
@@ -40,7 +40,7 @@ public class TeleOp extends OpMode {
 		rc.isDoorOpened = gamepad2.x ? true :
 							gamepad2.right_stick_button ? false :
 							rc.isDoorOpened;
-
+		rc.shouldJostleChanged = gamepad1.dpad_up;
 
 		if(Math.abs(rc.climbValue) < 0.4) rc.climbValue = 0;
 		if(rc.signalOn) SoundPlayer.INSTANCE.play("Sirena");
